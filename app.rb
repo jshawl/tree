@@ -3,6 +3,7 @@ require 'sinatra/reloader'
 
 require_relative 'models/repo'
 require_relative 'models/blob'
+require_relative 'models/tree'
 
 get '/' do
   @repos = Repo.all
@@ -17,4 +18,9 @@ end
 get '/:repo/blob/master/:file' do
   @blob = Blob.new(params[:repo], params[:file])
   erb :'blobs/show'
+end
+
+get '/:repo/tree/master/:file' do
+  @tree = Tree.new(params[:repo], params[:file])
+  erb :'trees/show'
 end
