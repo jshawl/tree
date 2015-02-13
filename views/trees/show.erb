@@ -1,3 +1,7 @@
-<% @tree.each do |f| %>
-  <li><a href="<%= f %>"><%= f %></a></li>
+<% @tree.files.each do |f| %>
+  <% if f[:type] == :tree %>
+    <li><a href='/<%= @tree.repo.title %>/tree/<%= f[:oid] %>/<%= f[:name] %>'><%= f[:name] %>/ <small><%= f[:oid][0,7] %></small></a></li>
+  <% else %>
+    <li><a href='/<%= @tree.repo.title %>/blob/<%= f[:oid] %>/<%= f[:name] %>'><%= f[:name] %> <small><%= f[:oid][0,7] %></small></a></li>
+  <% end %>
 <% end %>

@@ -20,7 +20,7 @@ get '/:repo/blob/:blob/:filename' do
   erb :'blobs/show'
 end
 
-get '/:repo/tree/master/:file' do
-  @tree = Tree.new(params[:repo], params[:file])
+get '/:repo/tree/:oid/:file' do
+  @tree = Tree.new(params[:repo],params[:oid], params[:file])
   erb :'trees/show'
 end
