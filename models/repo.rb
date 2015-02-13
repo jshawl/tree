@@ -1,4 +1,5 @@
 require 'rugged'
+require 'pry'
 class Repo
   attr_accessor :title, :path, :url, :tree, :rgd
   def self.all
@@ -12,9 +13,7 @@ class Repo
     @repo.path = 'repos/' + repo + '.git'
     @repo.url = '/' + repo
     @repo.rgd = Rugged::Repository.new(@repo.path)
-    tree = @repo.rgd.lookup( @repo.rgd.head.target ).tree
-    @repo.tree = tree
-
+    @repo.tree = @repo.rgd.head.target.tree
     return @repo
   end
 end
