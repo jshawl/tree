@@ -15,8 +15,8 @@ get '/:repo' do
   erb :'repos/show'
 end
 
-get '/:repo/blob/master/:file' do
-  @blob = Blob.new(params[:repo], params[:file])
+get '/:repo/blob/:blob/:filename' do
+  @blob = Blob.new(params[:repo], params[:blob], params[:filename])
   erb :'blobs/show'
 end
 
