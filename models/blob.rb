@@ -1,4 +1,5 @@
 require 'rugged'
+require 'htmlentities'
 require 'pry'
 
 class Blob
@@ -8,6 +9,6 @@ class Blob
     @repo = Repo.find( repo )
     @file = @repo.tree[file][:name]
     blob = @repo.rgd.lookup(oid)
-    @contents = blob.content
+    @contents = HTMLEntities.new.encode(blob.content)
   end
 end
