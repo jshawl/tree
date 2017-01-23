@@ -1,8 +1,8 @@
-<h2><a href='/<%= @tree.repo.title %>'><%= @tree.repo.title %></a> / <%= @tree.path %></h2>
+<h2><a href='/<%= @tree.repo.title %>'><%= @tree.repo.title %></a>/<%= @tree.path %></h2>
 <% @tree.files.each do |f| %>
   <% if f[:type] == :tree %>
-    <li><a href='/<%= @tree.repo.title %>/tree/<%= f[:oid] %>/<%= f[:name] %>'><%= f[:name] %>/ <small><%= f[:oid][0,7] %></small></a></li>
+    <li><a href='/<%= @tree.repo.title %>/tree/master/<%= params[:captures][-1]%>/<%= f[:name] %>'><%= f[:name] %>/ <small><%= f[:oid][0,7] %></small></a></li>
   <% else %>
-    <li><a href='/<%= @tree.repo.title %>/blob/<%= f[:oid] %>/<%= params[:captures][-1]%>/<%= f[:name] %>'><%= f[:name] %> <small><%= f[:oid][0,7] %></small></a></li>
+    <li><a href='/<%= @tree.repo.title %>/blob/master/<%= params[:captures][-1]%>/<%= f[:name] %>'><%= f[:name] %> <small><%= f[:oid][0,7] %></small></a></li>
   <% end %>
 <% end %>
